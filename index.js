@@ -1,6 +1,6 @@
 import { ZView, ZText } from './src/components';
 
-export default {
+export {
     ZView,
     ZText
 }

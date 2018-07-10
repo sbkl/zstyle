@@ -1,4 +1,4 @@
-import options from '../../../../zstyle';
+import options from '../../../zstyle';
 
 import utilities from './utilities';
 
