@@ -84,6 +84,11 @@ const styles = {
         fontWeight: {
             prefix: 'font'
         }
+    },
+    borderWidth: {
+        borderWidth: {
+            prefix: ''
+        }
     }
 }
 
