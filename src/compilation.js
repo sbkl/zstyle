@@ -5,128 +5,101 @@ import utilities from './utilities';
 const styles = {
     margin: {
         margin: {
-            prefix: 'm',
-            suffix: ''
+            prefix: 'm'
         },
         marginHorizontal: {
-            prefix: 'mx',
-            suffix: ''
+            prefix: 'mx'
         },
         marginVertical: {
-            prefix: 'my',
-            suffix: ''
+            prefix: 'my'
         },
         marginLeft: {
-            prefix: 'ml',
-            suffix: ''
+            prefix: 'ml'
         },
         marginRight: {
-            prefix: 'mr',
-            suffix: ''
+            prefix: 'mr'
         },
         marginTop: {
-            prefix: 'mt',
-            suffix: ''
+            prefix: 'mt'
         },
         marginBottom: {
-            prefix: 'mb',
-            suffix: ''
+            prefix: 'mb'
         }
     },
     padding: {
         padding: {
-            prefix: 'p',
-            suffix: ''
+            prefix: 'p'
         },
         paddingHorizontal: {
-            prefix: 'px',
-            suffix: ''
+            prefix: 'px'
         },
         paddingVertical: {
-            prefix: 'py',
-            suffix: ''
+            prefix: 'py'
         },
         paddingLeft: {
-            prefix: 'pl',
-            suffix: ''
+            prefix: 'pl'
         },
         paddingRight: {
-            prefix: 'pr',
-            suffix: ''
+            prefix: 'pr'
         },
         paddingTop: {
-            prefix: 'pt',
-            suffix: ''
+            prefix: 'pt'
         },
         paddingBottom: {
-            prefix: 'pb',
-            suffix: ''
+            prefix: 'pb'
         }
     },
     width: {
         width: {
-            prefix: 'w',
-            suffix: ''
+            prefix: 'w'
         }
     },
     height: {
         height: {
-            prefix: 'h',
-            suffix: ''
+            prefix: 'h'
         }
     },
     colors: {
         backgroundColor: {
-            prefix: 'bg',
-            suffix: ''
+            prefix: 'bg'
         },
         color: {
-            prefix: 'text',
-            suffix: ''
+            prefix: 'text'
         },
         borderColor: {
-            prefix: 'border',
-            suffix: ''
+            prefix: 'border'
         }
     },
     borderRadius: {
         borderRadius: {
-            prefix: '',
-            suffix: ''
+            prefix: ''
         }
     },
     fontSizes: {
         fontSize: {
-            prefix: 'text',
-            suffix: ''
+            prefix: 'text'
         }
     },
     fontWeights: {
         fontWeight: {
-            prefix: 'font',
-            suffix: ''
+            prefix: 'font'
         }
     },
     borderWidth: {
         borderWidth: {
-            prefix: 'border',
-            suffix: ''
+            prefix: 'border'
         },
         borderLeftWidth: {
-            prefix: 'border',
-            suffix: 'l'
+            prefix: 'border-l'
         },
         borderRightWidth: {
-            prefix: 'border',
-            suffix: 'r'
+            prefix: 'border-r'
         },
         borderTopWidth: {
-            prefix: 'border',
-            suffix: 't'
+            prefix: 'border-t'
         },
         borderBottomWidth: {
-            prefix: 'border',
-            suffix: 'b'
+            prefix: 'border-b'
         }
     }
 }
@@ -141,15 +114,13 @@ let transformedStyles = Object.keys(styles).reduce((carry, style) => {
 
             let prefix = styles[style][styleObject].prefix === '' ? '' : styles[style][styleObject].prefix + '-';
 
-            let suffix = styles[style][styleObject].suffix === '' ? '' : styles[style][styleObject].suffix + '-';
+            tmp[`${prefix}${key}`] = {}
 
-            tmp[`${prefix}${suffix}${key}`] = {}
-
-            tmp[`${prefix}${suffix}${key}`][styleObject] = options[style][key];
+            tmp[`${prefix}${key}`][styleObject] = options[style][key];
 
             if (style === 'margin' || style === 'padding') {
-                tmp[`-${prefix}${suffix}${key}`] = {}
-                tmp[`-${prefix}${suffix}${key}`][styleObject] = -options[style][key];
+                tmp[`-${prefix}${key}`] = {}
+                tmp[`-${prefix}${key}`][styleObject] = -options[style][key];
             }
 
             carry = Object.assign(tmp, carry);
