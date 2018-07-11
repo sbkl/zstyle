@@ -75,6 +75,11 @@ const styles = {
             prefix: 'leading-'
         }
     },
+    letterSpacing: {
+        letterSpacing: {
+            prefix: 'tracking-'
+        }
+    },
     borderRadius: {
         borderRadius: {
             prefix: ''
