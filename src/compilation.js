@@ -143,13 +143,13 @@ let transformedStyles = Object.keys(styles).reduce((carry, style) => {
 
             let suffix = styles[style][styleObject].suffix === '' ? '' : styles[style][styleObject].suffix + '-';
 
-            tmp[`${prefix}${suffix}${key}`] = {}
+            tmp[`${prefix}${key}${suffix}`] = {}
 
-            tmp[`${prefix}${suffix}${key}`][styleObject] = options[style][key];
+            tmp[`${prefix}${key}${suffix}`][styleObject] = options[style][key];
 
             if (style === 'margin' || style === 'padding') {
-                tmp[`-${prefix}${suffix}${key}`] = {}
-                tmp[`-${prefix}${suffix}${key}`][styleObject] = -options[style][key];
+                tmp[`-${prefix}${key}${suffix}`] = {}
+                tmp[`-${prefix}${key}${suffix}`][styleObject] = -options[style][key];
             }
 
             carry = Object.assign(tmp, carry);
