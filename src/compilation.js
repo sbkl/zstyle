@@ -5,69 +5,74 @@ import utilities from './utilities';
 const styles = {
     margin: {
         margin: {
-            prefix: 'm'
+            prefix: 'm-'
         },
         marginHorizontal: {
-            prefix: 'mx'
+            prefix: 'mx-'
         },
         marginVertical: {
-            prefix: 'my'
+            prefix: 'my-'
         },
         marginLeft: {
-            prefix: 'ml'
+            prefix: 'ml-'
         },
         marginRight: {
-            prefix: 'mr'
+            prefix: 'mr-'
         },
         marginTop: {
-            prefix: 'mt'
+            prefix: 'mt-'
         },
         marginBottom: {
-            prefix: 'mb'
+            prefix: 'mb-'
         }
     },
     padding: {
         padding: {
-            prefix: 'p'
+            prefix: 'p-'
         },
         paddingHorizontal: {
-            prefix: 'px'
+            prefix: 'px-'
         },
         paddingVertical: {
-            prefix: 'py'
+            prefix: 'py-'
         },
         paddingLeft: {
-            prefix: 'pl'
+            prefix: 'pl-'
         },
         paddingRight: {
-            prefix: 'pr'
+            prefix: 'pr-'
         },
         paddingTop: {
-            prefix: 'pt'
+            prefix: 'pt-'
         },
         paddingBottom: {
-            prefix: 'pb'
+            prefix: 'pb-'
         }
     },
     width: {
         width: {
-            prefix: 'w'
+            prefix: 'w-'
         }
     },
     height: {
         height: {
-            prefix: 'h'
+            prefix: 'h-'
         }
     },
     colors: {
         backgroundColor: {
-            prefix: 'bg'
+            prefix: 'bg-'
         },
         color: {
-            prefix: 'text'
+            prefix: 'text-'
         },
         borderColor: {
-            prefix: 'border'
+            prefix: 'border-'
+        }
+    },
+    lineHeight: {
+        lineHeight: {
+            prefix: 'leading-'
         }
     },
     borderRadius: {
@@ -77,29 +82,34 @@ const styles = {
     },
     fontSizes: {
         fontSize: {
-            prefix: 'text'
+            prefix: 'text-'
         }
     },
     fontWeights: {
         fontWeight: {
-            prefix: 'font'
+            prefix: 'font-'
         }
     },
     borderWidth: {
         borderWidth: {
-            prefix: 'border'
+            prefix: 'border-'
         },
         borderLeftWidth: {
-            prefix: 'border-l'
+            prefix: 'border-l-'
         },
         borderRightWidth: {
-            prefix: 'border-r'
+            prefix: 'border-r-'
         },
         borderTopWidth: {
-            prefix: 'border-t'
+            prefix: 'border-t-'
         },
         borderBottomWidth: {
-            prefix: 'border-b'
+            prefix: 'border-b-'
+        }
+    },
+    zIndex: {
+        zIndex: {
+            prefix: 'z-'
         }
     }
 }
@@ -112,7 +122,7 @@ let transformedStyles = Object.keys(styles).reduce((carry, style) => {
 
             let tmp = {}
 
-            let prefix = styles[style][styleObject].prefix === '' ? '' : styles[style][styleObject].prefix + '-';
+            let prefix = styles[style][styleObject].prefix;
 
             tmp[`${prefix}${key}`] = {}
 

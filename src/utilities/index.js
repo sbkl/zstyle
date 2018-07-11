@@ -1,5 +1,8 @@
 import flex from './flex';
+import position from './position';
+import overflow from './overflow';
+import text from './text';
 
 let utilities = {}
 
-export default Object.assign(flex, utilities);
+export default Object.assign(flex, position, overflow, text, utilities);
