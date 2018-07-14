@@ -1,6 +1,9 @@
-import { ZView, ZText } from './src/components';
+import { ZView, ZText, ZTouchableOpacity, ZTouchableHighlight, ZTouchableWithoutFeedback } from './src/components';
 
 export {
     ZView,
-    ZText
+    ZText,
+    ZTouchableOpacity,
+    ZTouchableHighlight,
+    ZTouchableWithoutFeedback
 }
