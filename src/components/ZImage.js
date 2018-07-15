@@ -7,7 +7,14 @@ import compile from '../compilation';
 export default class ZImage extends Component {
     static defaultProps = {
         zstyle: '',
-        animated: false
+        animated: false,
+        zref: () => {}
+    }
+    componentWillMount() {
+        this._component = {};
+    }
+    componentDidMount() {
+        this.props.zref(this._component);
     }
     render() {
 
@@ -17,11 +24,11 @@ export default class ZImage extends Component {
 
         if(animated) {
             return (
-                <Animated.Image style={[compile(styleArray), style]} {...rest}/>
+                <Animated.Image ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
             )
         } else {
             return (
-                <Image style={[compile(styleArray), style]} {...rest}/>
+                <Image ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
             )
         }
     }

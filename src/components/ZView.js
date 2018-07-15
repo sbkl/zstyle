@@ -7,7 +7,14 @@ import compile from '../compilation';
 export default class ZView extends Component {
     static defaultProps = {
         zstyle: '',
-        animated: false
+        animated: false,
+        zref: () => {}
+    }
+    componentWillMount() {
+        this._component = {};
+    }
+    componentDidMount() {
+        this.props.zref(this._component);
     }
     render() {
 
@@ -17,7 +24,7 @@ export default class ZView extends Component {
 
         if(animated) {
             return (
-                <Animated.View style={[compile(styleArray), style]} {...rest}>
+                <Animated.View ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
                     {
                         this.props.children
                     }
@@ -25,7 +32,7 @@ export default class ZView extends Component {
             )
         } else {
             return (
-                <View style={[compile(styleArray), style]} {...rest}>
+                <View ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
                     {
                         this.props.children
                     }
