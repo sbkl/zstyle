@@ -11,6 +11,14 @@ export default {
         bottom: 0,
         left: 0
     },
+    'pin-x': {
+        right: 0,
+        left: 0
+    },
+    'pin-y': {
+        top: 0,
+        bottom: 0,
+    },
     'pin-t': {
         top: 0
     },
