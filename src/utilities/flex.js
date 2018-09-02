@@ -60,7 +60,40 @@ export default {
         alignItems: 'stretch'
     },
     'items-baseline': {
-        alignItems: 'flex-baseline'
+        alignItems: 'baseline'
+    },
+    'content-start': {
+        alignContent: 'flex-start'
+    },
+    'content-center': {
+        alignContent: 'center'
+    },
+    'content-end': {
+        alignContent: 'flex-end'
+    },
+    'content-stretch': {
+        alignContent: 'stretch'
+    },
+    'content-between': {
+        alignContent: 'space-between'
+    },
+    'content-around': {
+        alignContent: 'space-around'
+    },
+    'self-start': {
+        alignSelf: 'flex-start'
+    },
+    'self-center': {
+        alignSelf: 'center'
+    },
+    'self-end': {
+        alignSelf: 'flex-end'
+    },
+    'self-stretch': {
+        alignSelf: 'stretch'
+    },
+    'self-baseline': {
+        alignSelf: 'baseline'
     },
     'justify-start': {
         justifyContent: 'flex-start'
@@ -71,10 +104,13 @@ export default {
     'justify-end': {
         justifyContent: 'flex-end'
     },
+    'justify-between': {
+        justifyContent: 'space-between'
+    },
     'justify-around': {
         justifyContent: 'space-around'
     },
-    'justify-between': {
-        justifyContent: 'space-between'
+    'justify-evenly': {
+        justifyContent: 'space-evenly'
     },
 }
