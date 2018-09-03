@@ -24,6 +24,12 @@ const styles = {
         },
         marginBottom: {
             prefix: 'mb-'
+        },
+        marginStart: {
+            prefix: 'ms-'
+        },
+        marginEnd: {
+            prefix: 'me-'
         }
     },
     padding: {
@@ -110,6 +116,12 @@ const styles = {
         },
         borderBottomWidth: {
             prefix: 'border-b-'
+        },
+        borderStartWidth: {
+            prefix: 'border-s-'
+        },
+        borderEndWidth: {
+            prefix: 'border-e-'
         }
     },
     zIndex: {
