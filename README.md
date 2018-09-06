@@ -26,7 +26,11 @@ The 'zstyle.js' file is the place to setup all your customs styling utilities th
 
 ## Documentation
 
-Working on a dedicated web page describing all utilities and more.
+A first version of the official documentation is available here: [react-native-zstyle.com](https://react-native-zstyle.com/)
+
+This documentation is explaining the concept of the library as well as listing all availble utilities.
+
+This is a work in progress it still need to get styling examples you can achieve with zstyle.
 
 ## License
 
