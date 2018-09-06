@@ -140,7 +140,7 @@ let transformedStyles = Object.keys(styles).reduce((carry, style) => {
 
     Object.keys(styles[style]).forEach(styleObject => {
 
-        Object.keys(options[style]).forEach(key => {
+        options[style] != null && Object.keys(options[style]).forEach(key => {
 
             let tmp = {}
 
