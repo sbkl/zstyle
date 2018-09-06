@@ -3,6 +3,11 @@ import options from '../../../zstyle';
 import utilities from './utilities';
 
 const styles = {
+    opacity: {
+        opacity: {
+            prefix: 'opacity-'
+        }
+    },
     margin: {
         margin: {
             prefix: 'm-'
