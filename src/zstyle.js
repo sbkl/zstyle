@@ -1,4 +1,7 @@
 export default {
+    components: {
+
+    },
     colors: {
 
         'transparent': 'transparent',
