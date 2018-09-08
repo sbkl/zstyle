@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import options from '../../../../zstyle';
+
 import { View, Animated } from 'react-native';
 
 import compile from '../compilation';
@@ -22,6 +24,8 @@ export default class ZView extends Component {
 
         let styleArray = zstyle.split(' ');
 
+        styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
+        
         if(animated) {
             return (
                 <Animated.View ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
