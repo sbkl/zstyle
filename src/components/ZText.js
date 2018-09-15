@@ -28,7 +28,7 @@ export default class ZText extends Component {
 
         if(animated) {
             return (
-                <Animated.Text ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <Animated.Text ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}/>
             )
         } else {
             return (

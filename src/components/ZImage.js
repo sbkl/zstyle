@@ -28,7 +28,7 @@ export default class ZImage extends Component {
 
         if(animated) {
             return (
-                <Animated.Image ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <Animated.Image ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}/>
             )
         } else {
             return (

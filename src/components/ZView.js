@@ -28,7 +28,7 @@ export default class ZView extends Component {
         
         if(animated) {
             return (
-                <Animated.View ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
+                <Animated.View ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}>
                     {
                         this.props.children
                     }
