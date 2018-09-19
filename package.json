@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/sbkl/zstyle/issues"
   },
-  "homepage": "https://github.com/sbkl/zstyle#readme"
+  "homepage": "https://github.com/sbkl/zstyle#readme",
+  "dependencies": {
+    "react-native-cached-image": "^1.4.3",
+    "rn-fetch-blob": "^0.10.13"
+  }
 }
