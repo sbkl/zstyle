@@ -31,7 +31,7 @@ export default class ZImage extends Component {
 
         if (cached) {
             return (
-                <CachedImage ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}/>
+                <CachedImage ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
             )                     
         } else if(animated) {
             return (
