@@ -1,6 +1,6 @@
 {
   "name": "react-native-zstyle",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A utility first style component library for react native.",
   "main": "index.js",
   "scripts": {
@@ -20,9 +20,5 @@
   "bugs": {
     "url": "https://github.com/sbkl/zstyle/issues"
   },
-  "homepage": "https://github.com/sbkl/zstyle#readme",
-  "dependencies": {
-    "react-native-cached-image": "^1.4.3",
-    "rn-fetch-blob": "^0.10.13"
-  }
+  "homepage": "https://github.com/sbkl/zstyle#readme"
 }
