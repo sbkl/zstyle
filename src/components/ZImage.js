@@ -4,15 +4,13 @@ import options from '../../../../zstyle';
 
 import { Image, Animated } from 'react-native';
 
-import { CachedImage } from 'react-native-cached-image';
-
 import compile from '../compilation';
 
 export default class ZImage extends Component {
     static defaultProps = {
         zstyle: '',
         animated: false,
-        cached: false,
+        CachedWith: false,
         zref: () => {}
     }
     componentWillMount() {
@@ -23,15 +21,15 @@ export default class ZImage extends Component {
     }
     render() {
 
-        let {zstyle, style, animated, cached, ...rest } = this.props;
+        let {zstyle, style, animated, CachedWith, ...rest } = this.props;
 
         let styleArray = zstyle.split(' ');
 
         styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
 
-        if (cached) {
+        if (CachedWith) {
             return (
-                <CachedImage ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <CachedWith ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
             )                     
         } else if(animated) {
             return (
