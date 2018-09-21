@@ -1,3 +1,7 @@
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+
 export default {
     components: {
 
@@ -153,7 +157,8 @@ export default {
         '1/4': '25%',
         '2/3': '66.66%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        'screen': width
     },
     height: {
         '40': 40,
@@ -168,7 +173,8 @@ export default {
         '1/4': '25%',
         '2/3': '66.66%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        'screen': height
     },
     borderWidth: {
         '1': 1,
