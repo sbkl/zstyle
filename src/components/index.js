@@ -1,15 +1,19 @@
-import ZView from './ZView';
 import ZText from './ZText';
+import ZView from './ZView';
+import ZImage from './ZImage';
+import ZFlatList from './ZFlatList';
+import ZScrollView from './ZScrollView';
 import ZTouchableOpacity from './ZTouchableOpacity';
 import ZTouchableHighlight from './ZTouchableHighlight';
 import ZTouchableWithoutFeedback from './ZTouchableWithoutFeedback';
-import ZImage from './ZImage';
 
 export {
-    ZView,
     ZText,
+    ZView,
+    ZImage,
+    ZFlatList,
+    ZScrollView,
     ZTouchableOpacity,
     ZTouchableHighlight,
-    ZTouchableWithoutFeedback,
-    ZImage
+    ZTouchableWithoutFeedback
 }

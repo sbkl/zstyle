@@ -1,17 +1,21 @@
 import {
-    ZView,
     ZText,
+    ZView,
+    ZImage,
+    ZFlatList,
+    ZScrollView,
     ZTouchableOpacity,
     ZTouchableHighlight,
-    ZTouchableWithoutFeedback,
-    ZImage
+    ZTouchableWithoutFeedback
 } from './src/components';
 
 export {
-    ZView,
     ZText,
+    ZView,
+    ZImage,
+    ZFlatList,
+    ZScrollView,
     ZTouchableOpacity,
     ZTouchableHighlight,
-    ZTouchableWithoutFeedback,
-    ZImage
+    ZTouchableWithoutFeedback
 }
