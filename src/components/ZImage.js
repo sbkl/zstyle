@@ -17,7 +17,20 @@ export default class ZImage extends Component {
         this._component = {};
     }
     componentDidMount() {
-        this.props.zref(this._component);
+        let {animated, CachedWith} = this.props
+        
+        setTimeout(() => {
+            
+            if (animated && CachedWith) {
+                this.props.zref(this._component._component);                
+            } else if (CachedWith) {
+                this.props.zref(this._component.refs.cachedImage._viewRef);
+            } else if (animated) {
+                this.props.zref(this._component._component);
+            } else {
+                this.props.zref(this._component);
+            }
+        },200);
     }
     render() {
 
@@ -27,17 +40,23 @@ export default class ZImage extends Component {
 
         styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
 
-        if (CachedWith) {
+        if (animated && CachedWith) {            
             return (
-                <CachedWith ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <Animated.View ref={component => this._component = component} style={[compile(styleArray), animated, style]}>
+                    <CachedWith style={{width: '100%', height: '100%'}} {...rest}/>
+                </Animated.View>
             )                     
+        } else if (CachedWith) {            
+            return (                
+                <CachedWith ref={component => this._component = component} style={[{width: '100%', height: '100%'}, compile(styleArray), style]} {...rest}/>                             
+            )
         } else if(animated) {
             return (
-                <Animated.Image ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}/>
+                <Animated.Image ref={component => this._component = component} style={[{width: '100%', height: '100%'}, compile(styleArray), animated, style]} {...rest}/>
             )
         } else {
             return (
-                <Image ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <Image ref={component => this._component = component} style={[{width: '100%', height: '100%'}, compile(styleArray), style]} {...rest}/>
             )
         }
     }
