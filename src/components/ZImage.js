@@ -24,13 +24,13 @@ export default class ZImage extends Component {
             if (animated && CachedWith) {
                 this.props.zref(this._component._component);                
             } else if (CachedWith) {
-                this.props.zref(this._component.refs.cachedImage._viewRef);
+                this.props.zref(this._component.refs.cachedImage ? this._component.refs.cachedImage._viewRef : this._component._root);
             } else if (animated) {
                 this.props.zref(this._component._component);
             } else {
                 this.props.zref(this._component);
             }
-        },200);
+        },250);
     }
     render() {
 
