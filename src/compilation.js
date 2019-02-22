@@ -1,6 +1,8 @@
+import { Dimensions } from 'react-native';
 import options from '../../../zstyle';
-
 import utilities from './utilities';
+
+const { width } = Dimensions.get('window');
 
 const styles = {
     opacity: {
@@ -137,31 +139,20 @@ const styles = {
 }
 
 let transformedStyles = Object.keys(styles).reduce((carry, style) => {
-
     Object.keys(styles[style]).forEach(styleObject => {
-
         options[style] != null && Object.keys(options[style]).forEach(key => {
-
             let tmp = {}
-
             let prefix = styles[style][styleObject].prefix;
-
             tmp[`${prefix}${key}`] = {}
-
             tmp[`${prefix}${key}`][styleObject] = options[style][key];
-
             if (style === 'margin' || style === 'padding') {
                 tmp[`-${prefix}${key}`] = {}
                 tmp[`-${prefix}${key}`][styleObject] = -options[style][key];
             }
-
             carry = Object.assign(tmp, carry);
-
         })
     });
-
     return carry;
-
 }, {});
 
 let mergedStyles = Object.assign(
@@ -170,32 +161,25 @@ let mergedStyles = Object.assign(
 );
 
 export default (stylesArray) => stylesArray.map(style => {
-
     if(style.includes('leading')) {
-
         let prefix = styles.fontSizes.fontSize.prefix;
-
         let fontSizesKeyArray = Object.keys(options.fontSizes).map(key => prefix + key);
-
         if(stylesArray.some(style => fontSizesKeyArray.includes(style))) {
-
-            let fontSizeKey = ''
-
+            let fontSizeKey = '';
             stylesArray.forEach(style => {
                 if(fontSizesKeyArray.includes(style)) {
                     fontSizeKey = style.replace(prefix, '');
                 }
             });
-
-            return {
-                lineHeight: (mergedStyles[style].lineHeight * options.fontSizes[fontSizeKey])
-            }
+            return { lineHeight: (mergedStyles[style].lineHeight * options.fontSizes[fontSizeKey]) }
         } else {
-            return {
-                lineHeight: mergedStyles[style].lineHeight * 16
-            }
+            return { lineHeight: mergedStyles[style].lineHeight * 16 }
         }
     }
-
+    if (mergedStyles[style] && mergedStyles[style].hasOwnProperty('fontSize')) {
+        return {
+            fontSize: width * (mergedStyles[style].fontSize / 375)
+        }
+    }
     return mergedStyles[style];
 });
