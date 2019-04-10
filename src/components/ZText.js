@@ -10,7 +10,8 @@ export default class ZText extends Component {
     static defaultProps = {
         zstyle: '',
         animated: false,
-        zref: () => {}
+        zref: () => {},
+        text: null
     }
     componentWillMount() {
         this._component = {};
@@ -28,11 +29,11 @@ export default class ZText extends Component {
 
         if(animated) {
             return (
-                <Animated.Text ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}/>
+                <Animated.Text ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}>{this.props.text ? this.props.text : this.props.children}</Animated.Text>
             )
         } else {
             return (
-                <Text ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+                <Text ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>{this.props.text ? this.props.text : this.props.children}</Text>
             )
         }
     }
