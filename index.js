@@ -5,7 +5,6 @@ import {
     ZFlatList,
     ZTextInput,
     ZScrollView,
-    ZSectionList,
     ZTouchableOpacity,
     ZTouchableHighlight,
     ZTouchableWithoutFeedback
@@ -18,7 +17,6 @@ export {
     ZFlatList,
     ZTextInput,
     ZScrollView,
-    ZSectionList,
     ZTouchableOpacity,
     ZTouchableHighlight,
     ZTouchableWithoutFeedback
