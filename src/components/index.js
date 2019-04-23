@@ -4,6 +4,7 @@ import ZImage from './ZImage';
 import ZFlatList from './ZFlatList';
 import ZTextInput from './ZTextInput';
 import ZScrollView from './ZScrollView';
+import ZSectionList from './ZSectionList';
 import ZTouchableOpacity from './ZTouchableOpacity';
 import ZTouchableHighlight from './ZTouchableHighlight';
 import ZTouchableWithoutFeedback from './ZTouchableWithoutFeedback';
@@ -15,6 +16,7 @@ export {
     ZFlatList,
     ZTextInput,
     ZScrollView,
+    ZSectionList,
     ZTouchableOpacity,
     ZTouchableHighlight,
     ZTouchableWithoutFeedback
