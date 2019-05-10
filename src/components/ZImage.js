@@ -20,11 +20,10 @@ export default class ZImage extends Component {
         let {animated, CachedWith} = this.props
         
         setTimeout(() => {
-            
             if (animated && CachedWith) {
                 this.props.zref(this._component._component);                
             } else if (CachedWith) {
-                this.props.zref(this._component.refs.cachedImage ? this._component.refs.cachedImage._viewRef : this._component._root);
+                this.props.zref(this._component ? this._component.refs == null ? this._component : this._component.refs.cachedImage ? this._component.refs.cachedImage._viewRef : this._component._root : null);
             } else if (animated) {
                 this.props.zref(this._component._component);
             } else {
