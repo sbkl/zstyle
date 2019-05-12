@@ -1,4 +1,5 @@
 import ZText from './ZText';
+import ZList from './ZList';
 import ZView from './ZView';
 import ZImage from './ZImage';
 import ZFlatList from './ZFlatList';
@@ -11,6 +12,7 @@ import ZTouchableWithoutFeedback from './ZTouchableWithoutFeedback';
 
 export {
     ZText,
+    ZList,
     ZView,
     ZImage,
     ZFlatList,

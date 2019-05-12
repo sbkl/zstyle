@@ -1,5 +1,6 @@
 import {
     ZText,
+    ZList,
     ZView,
     ZImage,
     ZFlatList,
@@ -13,6 +14,7 @@ import {
 
 export {
     ZText,
+    ZList,
     ZView,
     ZImage,
     ZFlatList,
