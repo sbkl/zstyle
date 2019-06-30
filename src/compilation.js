@@ -138,6 +138,21 @@ const styles = {
     }
 }
 
+let parseColors = () => {
+    let colors = {}
+    Object.keys(options.colors).forEach((color) => {
+        if (typeof options.colors[color] != 'string') {
+            Object.keys(options.colors[color]).forEach(shade => {
+                colors[`${color}-${shade}`] = options.colors[color][shade]
+            })
+        } else {
+            colors[color] = options.colors[color]
+        }
+    })
+    return colors
+}
+options.colors = parseColors()
+
 let transformedStyles = Object.keys(styles).reduce((carry, style) => {
     Object.keys(styles[style]).forEach(styleObject => {
         options[style] != null && Object.keys(options[style]).forEach(key => {
