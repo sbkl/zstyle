@@ -7,12 +7,13 @@ import { TouchableWithoutFeedback } from 'react-native';
 import compile from '../compilation';
 
 export default class ZTouchableWithoutFeedback extends Component {
+    constructor(props) {
+        super(props);
+        this._component = {};
+    }
     static defaultProps = {
         zstyle: '',
         zref: () => {}
-    }
-    componentWillMount() {
-        this._component = {};
     }
     componentDidMount() {
         this.props.zref(this._component);

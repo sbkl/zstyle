@@ -7,14 +7,15 @@ import { Text, Animated } from 'react-native';
 import compile from '../compilation';
 
 export default class ZText extends Component {
+    constructor(props) {
+        super(props);
+        this._component = {};
+    }
     static defaultProps = {
         zstyle: '',
         animated: false,
         zref: () => {},
         text: null
-    }
-    componentWillMount() {
-        this._component = {};
     }
     componentDidMount() {
         this.props.zref(this._component);

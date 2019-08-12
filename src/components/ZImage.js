@@ -7,14 +7,15 @@ import { Image, Animated } from 'react-native';
 import compile from '../compilation';
 
 export default class ZImage extends Component {
+    constructor(props) {
+        super(props);
+        this._component = {};
+    }
     static defaultProps = {
         zstyle: '',
         animated: false,
         CachedWith: false,
         zref: () => {}
-    }
-    componentWillMount() {
-        this._component = {};
     }
     componentDidMount() {
         let {animated, CachedWith} = this.props
