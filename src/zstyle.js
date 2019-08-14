@@ -7,10 +7,10 @@ export default {
 
     },
     screens: {
-        sm: 600,
-        md: 812,
-        lg: 1200,
-        xl: 2000
+        xs: 320,
+        sm: 412,
+        md: 640,
+        xl: 1024
     },
     colors: {
         transparent: 'transparent',

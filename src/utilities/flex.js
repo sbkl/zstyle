@@ -1,7 +1,4 @@
 export default {
-    'flex-none': {
-        display: 'none'
-    },
     'flex-1': {
         flex: 1
     },
