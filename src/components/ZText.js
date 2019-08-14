@@ -44,7 +44,7 @@ export default class ZText extends Component {
             )
         } else {
             return (
-                <Text ref={component => this._component = component} style={[this.state.zstyles, style]} {...rest}>{this.props.text ? this.props.text : this.props.children}</Text>
+                <Text onLayout={this.compileStyles} ref={component => this._component = component} style={[this.state.zstyles, style]} {...rest}>{this.props.text ? this.props.text : this.props.children}</Text>
             )
         }
     }
