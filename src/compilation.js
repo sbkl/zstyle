@@ -191,10 +191,5 @@ export default (stylesArray) => stylesArray.map(style => {
             return { lineHeight: mergedStyles[style].lineHeight * 16 }
         }
     }
-    if (mergedStyles[style] && mergedStyles[style].hasOwnProperty('fontSize')) {
-        return {
-            fontSize: width * (mergedStyles[style].fontSize / 375)
-        }
-    }
     return mergedStyles[style];
 });
