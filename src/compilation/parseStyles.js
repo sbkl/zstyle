@@ -1,4 +1,4 @@
-import utilities from './utilities';
+import utilities from '../utilities';
 
 export default (stylePrefixes, options) => {
     let parsedStyles = Object.keys(stylePrefixes).reduce((carry, style) => {

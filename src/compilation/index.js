@@ -1,5 +1,5 @@
 import stylePrefixes from './stylePrefixes';
-import options from '../../../zstyle';
+import options from '../../../../zstyle';
 import parseColors from './parseColors';
 import parseStyles from './parseStyles';
 
