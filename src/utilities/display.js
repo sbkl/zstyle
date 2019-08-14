@@ -1,8 +1,12 @@
 export default {
     'hidden': {
-        display: 'none'
+        transform: [{
+            scale: 0
+        }]
     },
-    'show': {
-        display: 'flex'
+    'display': {
+        transform: [{
+            scale: 1
+        }]
     }
 }
