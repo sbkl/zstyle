@@ -6,6 +6,12 @@ export default {
     components: {
 
     },
+    screens: {
+        sm: 600,
+        md: 812,
+        lg: 1200,
+        xl: 2000
+    },
     colors: {
         transparent: 'transparent',
         black: '#000',

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import options from '../../../../zstyle';
-import { TextInput } from 'react-native';
+import {
+    TextInput,
+    Dimensions
+} from 'react-native';
 import compile from '../compilation';
+
 export default class ZTextInput extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            zstyles: {}
+        }
         this._component = {};
     }
     static defaultProps = {
@@ -13,11 +19,21 @@ export default class ZTextInput extends Component {
     }
     componentDidMount() {
         this.props.zref(this._component);
+        this.compileStyles();
+    }
+    onLayout = () => {
+        this.compileStyles();
+    }
+    compileStyles = () => {
+        this.setState({
+            zstyles: compile(this.props.zstyle, Dimensions.get('window').width)
+        })
     }
     render() {
-        let {zstyle, style, ...rest} = this.props;
-        let styleArray = zstyle.split(' ');
-        styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
-        return <TextInput ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}/>
+        let {
+            style,
+            ...rest
+        } = this.props;
+        return <TextInput onLayout={this.compileStyles} ref={component => this._component = component} style={[this.state.zstyles, style]} {...rest}/>
     }
 }

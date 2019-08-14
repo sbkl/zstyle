@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-
-import options from '../../../../zstyle';
-
-import { View, Animated } from 'react-native';
-
+import {
+    View,
+    Animated,
+    Dimensions
+} from 'react-native';
 import compile from '../compilation';
 
 export default class ZView extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            zstyles: {}
+        }
         this._component = {};
     }
     static defaultProps = {
@@ -18,29 +21,32 @@ export default class ZView extends Component {
     }
     componentDidMount() {
         this.props.zref(this._component);
+        this.compileStyles();
+    }
+    onLayout = () => {
+        this.compileStyles();
+    }
+    compileStyles = () => {
+        this.setState({
+            zstyles: compile(this.props.zstyle, Dimensions.get('window').width)
+        })
     }
     render() {
-
-        let {zstyle, style, animated, ...rest } = this.props;
-
-        let styleArray = zstyle.split(' ');
-
-        styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
-        
+        let {
+            style,
+            animated,
+            ...rest
+        } = this.props;        
         if(animated) {
             return (
-                <Animated.View ref={component => this._component = component} style={[compile(styleArray), animated, style]} {...rest}>
-                    {
-                        this.props.children
-                    }
+                <Animated.View onLayout={this.compileStyles} ref={component => this._component = component} style={[this.state.zstyles, animated, style]} {...rest}>
+                    { this.props.children }
                 </Animated.View>
             )
         } else {
             return (
-                <View ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
-                    {
-                        this.props.children
-                    }
+                <View onLayout={this.compileStyles} ref={component => this._component = component} style={[this.state.zstyles, style]} {...rest}>
+                    { this.props.children }
                 </View>
             )
         }        

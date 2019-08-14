@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-
-import options from '../../../../zstyle';
-
-import { TouchableWithoutFeedback } from 'react-native';
-
+import {
+    TouchableWithoutFeedback,
+    Dimensions
+} from 'react-native';
 import compile from '../compilation';
 
 export default class ZTouchableWithoutFeedback extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            zstyles: {}
+        }
         this._component = {};
     }
     static defaultProps = {
@@ -17,22 +19,25 @@ export default class ZTouchableWithoutFeedback extends Component {
     }
     componentDidMount() {
         this.props.zref(this._component);
+        this.compileStyles();
+    }
+    onLayout = () => {
+        this.compileStyles();
+    }
+    compileStyles = () => {
+        this.setState({
+            zstyles: compile(this.props.zstyle, Dimensions.get('window').width)
+        })
     }
     render() {
-
-        let {zstyle, style, ...rest } = this.props;
-
-        let styleArray = zstyle.split(' ');
-
-        styleArray.forEach(style => options.components[style] && options.components[style].split(' ').forEach(object => styleArray.push(object)));
-
+        let {
+            style,
+            ...rest
+        } = this.props;
         return (
-            <TouchableWithoutFeedback ref={component => this._component = component} style={[compile(styleArray), style]} {...rest}>
-            {
-                this.props.children
-            }
+            <TouchableWithoutFeedback onLayout={this.compileStyles} ref={component => this._component = component} style={[this.state.zstyles, style]} {...rest}>
+            { this.props.children }
             </TouchableWithoutFeedback>
         )
-        
     }
 }
