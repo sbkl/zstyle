@@ -1,5 +1,3 @@
-import ioshome from "./ioshome"
-import ioshelp from "./ioshelp"
 import iosadd from "./iosadd"
 import iosaddcircle from "./iosaddcircle"
 import iosaddcircleoutline from "./iosaddcircleoutline"

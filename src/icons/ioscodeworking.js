@@ -10,7 +10,7 @@ const ioscodeworking = props => (
       <Circle cx={192} cy={256} r={22} />
       <Circle cx={320} cy={256} r={22} />
     </Svg>
-  </ZView>
+  
 )
 
 export default ioscodeworking
