@@ -3,7 +3,7 @@ import { Dimensions } from "react-native"
 import Icons from "../icons"
 import compile from "../compilation"
 import options from "../../../../zstyle"
-
+import { ZView } from "../../index"
 export default class ZIcon extends Component {
 	constructor(props) {
 		super(props)
@@ -13,23 +13,33 @@ export default class ZIcon extends Component {
 				name: "ios-help",
 				size: "",
 				color: ""
-			}
+			},
+			customIcons: {}
 		}
 	}
 	static defaultProps = {
 		zstyle: ""
 	}
 	componentDidMount() {
-		this.compileStyles()
+		let customIcons = {}
+		options.icons.forEach(icon => {
+			let prefix = icon.prefix
+			Object.keys(icon.icons).forEach(key => {
+				customIcons[`${prefix}-${key}`] = icon.icons[key]
+			})
+		})
+		this.setState({ customIcons }, () => {
+			this.compileStyles()
+		})
 	}
 	onLayout = () => {
 		this.compileStyles()
 	}
 	compileStyles = () => {
-		let styles = this.props.zstyle.split(" ")
+		let zstyles = this.props.zstyle.split(" ")
 
 		let iconAttributes = {}
-		styles.forEach((style, index) => {
+		zstyles.forEach((style, index) => {
 			if (Icons[style] != undefined) {
 				iconAttributes.name = style
 			} else if (style.startsWith("text-")) {
@@ -43,20 +53,31 @@ export default class ZIcon extends Component {
 				}
 			}
 		})
-		styles = styles.filter(style => {
+		if (iconAttributes.name === undefined) {
+			zstyles.forEach((style, index) => {
+				if (this.state.customIcons[style] != undefined) {
+					iconAttributes.name = style
+				}
+			})
+		}
+		zstyles = zstyles.filter(style => {
 			return style != iconAttributes.name && !style.startsWith("text-")
 		})
-		styles = styles.join(" ")
+		zstyles = zstyles.join(" ")
 
 		this.setState({
-			zstyles: compile(styles, Dimensions.get("window").width),
+			zstyles,
 			iconAttributes
 		})
 	}
 	render() {
 		let { ...rest } = this.props
 		let { iconAttributes, zstyles } = this.state
-		let Icon = Icons[iconAttributes.name]
-		return <Icon size={iconAttributes.size || 24} color={iconAttributes.color || ""} zstyle={zstyles || []} />
+		let Icon = customIcons[iconAttributes.name] != undefined ? customIcons[iconAttributes.name] : Icons[iconAttributes.name] != undefined ? Icons[iconAttributes.name] : Icons["ios-help"]
+		return (
+			<ZView zstyle={zstyles || ""} {...rest}>
+				<Icon size={iconAttributes.size || 24} color={iconAttributes.color || ""} />
+			</ZView>
+		)
 	}
 }
