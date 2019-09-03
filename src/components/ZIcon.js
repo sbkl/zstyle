@@ -72,7 +72,7 @@ export default class ZIcon extends Component {
 	}
 	render() {
 		let { ...rest } = this.props
-		let { iconAttributes, zstyles } = this.state
+		let { iconAttributes, zstyles, customIcons } = this.state
 		let Icon = customIcons[iconAttributes.name] != undefined ? customIcons[iconAttributes.name] : Icons[iconAttributes.name] != undefined ? Icons[iconAttributes.name] : Icons["ios-help"]
 		return (
 			<ZView zstyle={zstyles || ""} {...rest}>
