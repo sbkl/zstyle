@@ -61,9 +61,29 @@ export default {
 			prefix: "w-"
 		}
 	},
+	maxWidth: {
+		maxWidth: {
+			prefix: "max-w-"
+		}
+	},
+	minWidth: {
+		minWidth: {
+			prefix: "min-w-"
+		}
+	},
 	height: {
 		height: {
 			prefix: "h-"
+		}
+	},
+	maxHeight: {
+		maxHeight: {
+			prefix: "max-h-"
+		}
+	},
+	minHeight: {
+		minHeight: {
+			prefix: "min-h-"
 		}
 	},
 	colors: {
@@ -125,9 +145,9 @@ export default {
 			prefix: "border-e-"
 		}
 	},
-	aspectRatios: {
+	aspectRatio: {
 		aspectRatio: {
-			prefix: "ratio"
+			prefix: "ratio-"
 		}
 	},
 	zIndex: {
