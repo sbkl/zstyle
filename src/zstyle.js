@@ -244,5 +244,8 @@ export default {
 		"50": 0.5,
 		"25": 0.25,
 		"0": 0
+	},
+	aspectRatios: {
+		landscape: 1324 / 863
 	}
 }
