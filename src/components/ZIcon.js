@@ -32,6 +32,20 @@ export default class ZIcon extends Component {
 			this.compileStyles()
 		})
 	}
+	componentDidUpdate(prevProps) {
+		if (prevProps.zstyle != this.props.zstyle) {
+			let customIcons = {}
+			options.icons.forEach(icon => {
+				let prefix = icon.prefix
+				Object.keys(icon.icons).forEach(key => {
+					customIcons[`${prefix}-${key}`] = icon.icons[key]
+				})
+			})
+			this.setState({ customIcons }, () => {
+				this.compileStyles()
+			})
+		}
+	}
 	onLayout = () => {
 		this.compileStyles()
 	}
@@ -73,10 +87,18 @@ export default class ZIcon extends Component {
 	render() {
 		let { ...rest } = this.props
 		let { iconAttributes, zstyles, customIcons } = this.state
-		let Icon = customIcons[iconAttributes.name] != undefined ? customIcons[iconAttributes.name] : Icons[iconAttributes.name] != undefined ? Icons[iconAttributes.name] : Icons["ios-help"]
+		let Icon =
+			customIcons[iconAttributes.name] != undefined
+				? customIcons[iconAttributes.name]
+				: Icons[iconAttributes.name] != undefined
+				? Icons[iconAttributes.name]
+				: Icons["ios-help"]
 		return (
 			<ZView zstyle={zstyles || ""} {...rest}>
-				<Icon size={iconAttributes.size || 24} color={iconAttributes.color || ""} />
+				<Icon
+					size={iconAttributes.size || 24}
+					color={iconAttributes.color || ""}
+				/>
 			</ZView>
 		)
 	}
