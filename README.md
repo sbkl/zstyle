@@ -9,12 +9,38 @@ zstyle is a utility-first styling library for React Native largely inspired by [
 
 ## Installation
 
-Install the package via npm:
+###1 . Install the package:
 ```bash
-npm install react-native-zstyle --save
+yarn add react-native-zstyle
 ```
 
-Then copy the 'zstyle.js' file into the root folder of your React Native project:
+###2 . Install the following dependencies:
+
+Reanimated
+```bash
+yarn add react-native-reanimated
+```
+```bash
+yarn add react-native-gesture-handler
+```
+```bash
+yarn add react-native-svg
+```
+###3 . Link the dependencies:
+
+React Native 0.60 and higher
+```bash
+cd ios && pod install && cd ..
+```
+React Native 0.59 and lower
+```bash
+react-native link react-native-reanimated
+react-native link react-native-gesture-handler
+react-native link react-native-svg
+```
+###4 . Create a Zstyle config file:
+
+Copy the 'zstyle.js' file into the root folder of your React Native project:
 
 ```bash
 cp ./node_modules/react-native-zstyle/src/zstyle.js .
