@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { View, Animated, Dimensions } from "react-native"
+import { Transitioning } from "react-native-reanimated"
 import compile from "../compilation"
 
 export default class ZView extends Component {
@@ -13,7 +14,8 @@ export default class ZView extends Component {
 	static defaultProps = {
 		zstyle: "",
 		animated: false,
-		zref: () => {}
+		zref: () => {},
+		reanimated: null
 	}
 	componentDidMount() {
 		this.props.zref(this._component)
@@ -33,7 +35,7 @@ export default class ZView extends Component {
 		})
 	}
 	render() {
-		let { style, animated, ...rest } = this.props
+		let { style, animated, reanimated, ...rest } = this.props
 		if (animated) {
 			return (
 				<Animated.View
@@ -44,6 +46,18 @@ export default class ZView extends Component {
 				>
 					{this.props.children}
 				</Animated.View>
+			)
+		} else if (reanimated) {
+			return (
+				<Transitioning.View
+					onLayout={this.compileStyles}
+					ref={component => (this._component = component)}
+					style={[this.state.zstyles, style]}
+					{...reanimated}
+					{...rest}
+				>
+					{this.props.children}
+				</Transitioning.View>
 			)
 		} else {
 			return (
