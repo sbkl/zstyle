@@ -16,14 +16,9 @@ yarn add react-native-zstyle
 
 ### 2 . Install the following dependencies:
 
-Reanimated
 ```bash
 yarn add react-native-reanimated
-```
-```bash
 yarn add react-native-gesture-handler
-```
-```bash
 yarn add react-native-svg
 ```
 ### 3 . Link the dependencies:
