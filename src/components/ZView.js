@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { View, Animated, Dimensions } from "react-native"
-import { Transitioning } from "react-native-reanimated"
 import compile from "../compilation"
 
 export default class ZView extends Component {
@@ -48,12 +47,13 @@ export default class ZView extends Component {
 				</Animated.View>
 			)
 		} else if (reanimated) {
+			const [Transitioning, transition] = reanimated
 			return (
 				<Transitioning.View
 					onLayout={this.compileStyles}
 					ref={component => (this._component = component)}
 					style={[this.state.zstyles, style]}
-					{...reanimated}
+					{...transition}
 					{...rest}
 				>
 					{this.props.children}
