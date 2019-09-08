@@ -35,8 +35,6 @@ cd ios && pod install && cd ..
 React Native 0.59 and lower
 
 ```bash
-react-native link react-native-reanimated
-react-native link react-native-gesture-handler
 react-native link react-native-svg
 ```
 
