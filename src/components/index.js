@@ -10,5 +10,20 @@ import ZSectionList from "./ZSectionList"
 import ZTouchableOpacity from "./ZTouchableOpacity"
 import ZTouchableHighlight from "./ZTouchableHighlight"
 import ZTouchableWithoutFeedback from "./ZTouchableWithoutFeedback"
+import ZKeyboardAvoidingView from "./ZKeyboardAvoidingView"
 
-export { ZText, ZIcon, ZList, ZView, ZImage, ZFlatList, ZTextInput, ZScrollView, ZSectionList, ZTouchableOpacity, ZTouchableHighlight, ZTouchableWithoutFeedback }
+export {
+	ZText,
+	ZIcon,
+	ZList,
+	ZView,
+	ZImage,
+	ZFlatList,
+	ZTextInput,
+	ZScrollView,
+	ZSectionList,
+	ZTouchableOpacity,
+	ZTouchableHighlight,
+	ZTouchableWithoutFeedback,
+	ZKeyboardAvoidingView
+}
