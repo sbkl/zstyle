@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { KeyboardAvoidingView, Dimensions } from "react-native"
 import compile from "../compilation"
 
-export default class ZView extends Component {
+export default class ZKeyboardAvoidingView extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
