@@ -1,0 +1,33 @@
+import {
+  AntDesign,
+  Entypo,
+  EvilIcons,
+  Feather,
+  FontAwesome,
+  FontAwesome5,
+  Fontisto,
+  Foundation,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Octicons,
+  SimpleLineIcons,
+  Zocial,
+} from "@expo/vector-icons";
+
+export default {
+  antdesign: AntDesign,
+  entypo: Entypo,
+  evilicons: EvilIcons,
+  feather: Feather,
+  fonteawesome: FontAwesome,
+  fontawesome5: FontAwesome5,
+  fontisto: Fontisto,
+  foundation: Foundation,
+  ionicons: Ionicons,
+  materialcommunityicons: MaterialCommunityIcons,
+  materialicons: MaterialIcons,
+  octicons: Octicons,
+  simplelineicons: SimpleLineIcons,
+  zocial: Zocial,
+};
