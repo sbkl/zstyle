@@ -1,22 +1,25 @@
-import flex from "./flex"
-import position from "./position"
-import overflow from "./overflow"
-import text from "./text"
-import direction from "./direction"
-import display from "./display"
-import resizeMode from "./resizeMode"
-import shadow from "./shadow"
+import flex from './flex'
+import display from './display'
+import text from './text'
+import bg from './bg'
+import borders from './borders'
+import dimensions from './dimensions'
+import margins from './margins'
+import paddings from './paddings'
+import transform from './transform'
+import resize from './resize'
+import direction from './direction'
 
-let utilities = {}
-
-export default Object.assign(
-	flex,
-	position,
-	overflow,
-	text,
-	utilities,
-	direction,
-	display,
-	resizeMode,
-	shadow
-)
+export default {
+  ...flex,
+  ...display,
+  ...text,
+  ...bg,
+  ...borders,
+  ...dimensions,
+  ...margins,
+  ...paddings,
+  ...transform,
+  ...resize,
+  ...direction
+}

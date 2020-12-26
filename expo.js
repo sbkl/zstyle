@@ -1,3 +1,3 @@
-import XIcon from "./src/components/XIcon";
+import XIcon from "./srcprev/components/XIcon";
 
 export { XIcon };

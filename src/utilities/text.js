@@ -1,38 +1,104 @@
+import colours from '../colours'
+
 export default {
-    'uppercase': {
-        textTransform: 'uppercase'
+  color: {
+    ...colours('color')
+  },
+  size: ([size]) => ({
+    fontSize: isNaN(parseFloat(size)) ? 16 : parseFloat(size)
+  }),
+  uppercase: () => ({textTransform: 'uppercase'}),
+  lowercase: () => ({textTransform: 'lowercase'}),
+  capitalize: () => ({textTransform: 'capitalize'}),
+  decoration: {
+    none: {
+      textDecorationLine: 'none'
     },
-    'lowercase': {
-        textTransform: 'lowercase'
+    underline: {
+      textDecorationLine: 'underline'
     },
-    'capitalize': {
-        textTransform: 'capitalize'
+    through: {
+      textDecorationLine: 'line-through'
     },
-    'text-center-x': {
-        textAlign: 'center'
+    both: {
+      textDecorationLine: 'underline line-through'
+    },        
+    solid: {
+      textDecorationStyle: 'solid'
     },
-    'text-auto-x': {
-        textAlign: 'auto'
+    double: {
+      textDecorationStyle: 'double'
     },
-    'text-left': {
-        textAlign: 'left'
+    dotted: {
+      textDecorationStyle: 'dotted'
     },
-    'text-right': {
-        textAlign: 'right'
+    dashed: {
+      textDecorationStyle: 'dashed',  
     },
-    'text-justify': {
-        textAlign: 'justify'
+  },
+  font: {
+    hairline: {
+      fontWeight: "100",
     },
-    'text-center-y': {
-        textAlignVertical: 'center'
+    thin: {
+      fontWeight: "200",
     },
-    'text-auto-y': {
-        textAlignVertical: 'auto'
+    light: {
+      fontWeight: "300",
     },
-    'text-top': {
-        textAlignVertical: 'top'
+    normal: {
+      fontWeight: "400",
     },
-    'text-bottom': {
-        textAlignVertical: 'bottom'
+    medium: {
+      fontWeight: "500",
+    },
+    semibold: {
+      fontWeight: "600",
+    },
+    bold: {
+      fontWeight: "700",
+    },
+    extrabold: {
+      fontWeight: "800",
+    },
+    black: {
+      fontWeight: "900",
+    },
+    italic: {
+      fontStyle: 'italic'
     }
+  },
+  align: {
+    x: {
+      auto: {
+        textAlign: "auto"
+      },
+      left: {
+        textAlign: "left"
+      },
+      right: {
+        textAlign: "right"
+      },
+      center: {
+        textAlign: "center"
+      },
+      justify: {
+        textAlign: "justify"
+      },
+    },
+    y: {
+      auto: {
+        textAlignVertical: "auto"
+      },
+      top: {
+        textAlignVertical: "top"
+      },
+      bottom: {
+        textAlignVertical: "bottom"
+      },
+      center: {
+        textAlignVertical: "center"
+      },
+    }
+  },
 }
