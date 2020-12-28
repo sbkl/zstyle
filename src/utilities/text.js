@@ -2,6 +2,39 @@ import config from "../config";
 import colors from "./colors";
 import reduceValue from "../reduceValue";
 
+const defaultFontWeights = {
+  hairline: {
+    fontWeight: "100",
+  },
+  thin: {
+    fontWeight: "200",
+  },
+  light: {
+    fontWeight: "300",
+  },
+  normal: {
+    fontWeight: "400",
+  },
+  medium: {
+    fontWeight: "500",
+  },
+  semibold: {
+    fontWeight: "600",
+  },
+  bold: {
+    fontWeight: "700",
+  },
+  extrabold: {
+    fontWeight: "800",
+  },
+  black: {
+    fontWeight: "900",
+  },
+  italic: {
+    fontStyle: "italic",
+  },
+};
+
 export default {
   text: (params) => {
     const colorValue = colors.getValue(params);
@@ -60,37 +93,25 @@ export default {
       textDecorationStyle: "dashed",
     },
   },
-  font: {
-    hairline: {
-      fontWeight: "100",
-    },
-    thin: {
-      fontWeight: "200",
-    },
-    light: {
-      fontWeight: "300",
-    },
-    normal: {
-      fontWeight: "400",
-    },
-    medium: {
-      fontWeight: "500",
-    },
-    semibold: {
-      fontWeight: "600",
-    },
-    bold: {
-      fontWeight: "700",
-    },
-    extrabold: {
-      fontWeight: "800",
-    },
-    black: {
-      fontWeight: "900",
-    },
-    italic: {
-      fontStyle: "italic",
-    },
+  font: (params) => {
+    if (config.theme && config.theme.fontWeight) {
+      const value = reduceValue(params, config.theme.fontWeight);
+      if (typeof value === "string") {
+        return {
+          fontWeight: value,
+        };
+      }
+      return {};
+    }
+    if (config.theme && config.theme.extend && config.theme.extend.fontWeight) {
+      const value = reduceValue(params, config.theme.extend.fontWeight);
+      if (typeof value === "string") {
+        return {
+          fontWeight: value,
+        };
+      }
+    }
+    return { ...defaultFontWeights[params[0]] };
   },
   align: {
     x: {
