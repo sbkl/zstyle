@@ -3,9 +3,7 @@ import display from './display'
 import text from './text'
 import bg from './bg'
 import borders from './borders'
-import dimensions from './dimensions'
-import margins from './margins'
-import paddings from './paddings'
+import spacing from './spacing'
 import transform from './transform'
 import resize from './resize'
 import direction from './direction'
@@ -16,9 +14,7 @@ export default {
   ...text,
   ...bg,
   ...borders,
-  ...dimensions,
-  ...margins,
-  ...paddings,
+  ...spacing,
   ...transform,
   ...resize,
   ...direction

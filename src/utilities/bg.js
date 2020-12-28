@@ -1,7 +1,7 @@
-import colours from '../colours'
+import colors from './colors'
 
 export default {
   bg: {
-    ...colours('backgroundColor')
+    ...colors.generateStyles('backgroundColor')
   },
 }

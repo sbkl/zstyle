@@ -1,39 +1,63 @@
-import colours from '../colours'
+import config from "../config";
+import colors from "./colors";
+import reduceValue from "../reduceValue";
 
 export default {
-  color: {
-    ...colours('color')
+  text: (params) => {
+    const colorValue = colors.getValue(params);
+    if (typeof colorValue === "string") {
+      return {
+        color: colorValue,
+      };
+    }
+    if (config.theme && config.theme.fontSize) {
+      const value = reduceValue(params, config.theme.fontSize);
+      if (typeof value === "number") {
+        return {
+          fontSize: value,
+        };
+      }
+      return {};
+    }
+    if (config.theme && config.theme.extend && config.theme.extend.fontSize) {
+      const value = reduceValue(params, config.theme.extend.fontSize);
+      if (typeof value === "number") {
+        return {
+          fontSize: value,
+        };
+      }
+    }
+    return {
+      fontSize: isNaN(parseFloat(params[0])) ? 16 : parseFloat(params[0]),
+    };
   },
-  size: ([size]) => ({
-    fontSize: isNaN(parseFloat(size)) ? 16 : parseFloat(size)
-  }),
-  uppercase: () => ({textTransform: 'uppercase'}),
-  lowercase: () => ({textTransform: 'lowercase'}),
-  capitalize: () => ({textTransform: 'capitalize'}),
+  uppercase: () => ({ textTransform: "uppercase" }),
+  lowercase: () => ({ textTransform: "lowercase" }),
+  capitalize: () => ({ textTransform: "capitalize" }),
   decoration: {
     none: {
-      textDecorationLine: 'none'
+      textDecorationLine: "none",
     },
     underline: {
-      textDecorationLine: 'underline'
+      textDecorationLine: "underline",
     },
     through: {
-      textDecorationLine: 'line-through'
+      textDecorationLine: "line-through",
     },
     both: {
-      textDecorationLine: 'underline line-through'
-    },        
+      textDecorationLine: "underline line-through",
+    },
     solid: {
-      textDecorationStyle: 'solid'
+      textDecorationStyle: "solid",
     },
     double: {
-      textDecorationStyle: 'double'
+      textDecorationStyle: "double",
     },
     dotted: {
-      textDecorationStyle: 'dotted'
+      textDecorationStyle: "dotted",
     },
     dashed: {
-      textDecorationStyle: 'dashed',  
+      textDecorationStyle: "dashed",
     },
   },
   font: {
@@ -65,40 +89,40 @@ export default {
       fontWeight: "900",
     },
     italic: {
-      fontStyle: 'italic'
-    }
+      fontStyle: "italic",
+    },
   },
   align: {
     x: {
       auto: {
-        textAlign: "auto"
+        textAlign: "auto",
       },
       left: {
-        textAlign: "left"
+        textAlign: "left",
       },
       right: {
-        textAlign: "right"
+        textAlign: "right",
       },
       center: {
-        textAlign: "center"
+        textAlign: "center",
       },
       justify: {
-        textAlign: "justify"
+        textAlign: "justify",
       },
     },
     y: {
       auto: {
-        textAlignVertical: "auto"
+        textAlignVertical: "auto",
       },
       top: {
-        textAlignVertical: "top"
+        textAlignVertical: "top",
       },
       bottom: {
-        textAlignVertical: "bottom"
+        textAlignVertical: "bottom",
       },
       center: {
-        textAlignVertical: "center"
+        textAlignVertical: "center",
       },
-    }
+    },
   },
-}
+};

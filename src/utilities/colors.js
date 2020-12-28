@@ -1,3 +1,5 @@
+import config from '../config'
+
 function reduceColourStyles(object, attribute) {
   return Object.keys(object).reduce((carry, item) => {
   if(typeof object[item] === 'string') {
@@ -11,7 +13,7 @@ function reduceColourStyles(object, attribute) {
   }, {})
 }
 
-const colours = {
+const standardColors = {
   transparent: "transparent",
   black: "#000",
   white: "#fff",
@@ -283,7 +285,30 @@ const colours = {
     500: "#cfb997",
   },
 }
+const colors = 
+config.theme && config.theme.colors ? config.theme.colors
+: config.theme && config.theme.extend && config.theme.extend.colors ?
+{...standardColors, ...config.theme.extend.colors}
+:  standardColors
 
-export default (attribute) => {
-  return reduceColourStyles(colours, attribute)
+
+export default {
+  generateStyles: (attribute) => {
+    return reduceColourStyles(colors, attribute)
+  },
+  getValue: (params) => {
+    return params.reduce((carry, param) => {
+      if(carry === undefined) {
+        return carry
+      }
+      if(Object.keys(carry).length === 0 && colors[param] != undefined) {
+        carry = colors[param];
+      } else if(carry[param] != undefined) {
+        carry = carry[param]
+      } else {
+        carry = undefined;
+      }
+      return carry
+    }, {})
+  }
 }
