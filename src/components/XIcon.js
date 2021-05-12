@@ -21,7 +21,7 @@ function XIcon(props) {
     delete compiledStyles.color;
     delete compiledStyles.fontSize;
     setWrapperStyle(compiledStyles);
-  }, []);
+  }, [zstyle]);
 
   const initIcon = () => {
     const iconSelected = zstyle.split(" ").filter((option) => {
