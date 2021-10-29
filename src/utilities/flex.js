@@ -1,10 +1,57 @@
 export default {
-  flex: ([n]) => ({flex: isNaN(parseFloat(n)) ? 0 : parseFloat(n)}),
-  grow: ([n]) => ({flexGrow: isNaN(parseFloat(n)) ? 0 : parseFloat(n)}),
-  shrink: ([n]) => ({flexShrink: isNaN(parseFloat(n)) ? 0 : parseFloat(n)}),
-  row: params => ({flexDirection: params.length === 0 ? "row" : params[0] === 'reverse' ? "row-reverse" : ""}),
-  col: params => ({flexDirection: params.length === 0 ? "column" : params[0] === 'reverse' ? "column-reverse" : ""}),
-  wrap: params => ({flexWrap: params.length === 0 ? "wrap" : params[0] === 'reverse' ? "wrap-reverse" : params[0] === 'none' ? "nowrap" : ""}),
+  flex: params => {
+    if(params.length && params[0] === 'row') {
+      if(params.length === 1) {
+        return {flexDirection: "row"}
+      }
+      if(params.length === 2 && params[1] === "reverse") {
+        return { flexDirection: "row-reverse"}
+      }
+      return {flexDirection: "column"}
+    }
+    if(params.length && params[0] === 'col') {
+      if(params.length === 1) {
+        return {flexDirection: "column"}
+      }
+      if(params.length === 2 && params[1] === "reverse") {
+        return { flexDirection: "column-reverse"}
+      }
+      return {flexDirection: "column"}
+    }
+    if(params.length && params[0] === 'wrap') {
+      if(params.length === 1) {
+        return {flexWrap: "wrap"}
+      }
+      if(params.length === 2 && params[1] === "reverse") {
+        return { flexWrap: "wrap-reverse"}
+      }
+      if(params.length === 2 && params[1] === "none") {
+        return { flexWrap: "nowrap"}
+      }
+      return { flexWrap: "nowrap" }
+    }
+    if(params.length && params[0] === 'grow') {
+      if(params.length === 1) {
+        return {flexGrow: 1}
+      }
+      if(params.length === 2 && !isNaN(parseFloat(params[1]))) {
+        return { flexGrow: parseFloat(params[1])}
+      }
+      return {flexGrow: 0}
+    }
+    if(params.length && params[0] === 'shrink') {
+      if(params.length === 1) {
+        return {flexShrink: 1}
+      }
+      if(params.length === 2 && !isNaN(parseFloat(params[1]))) {
+        return { flexShrink: parseFloat(params[1])}
+      }
+      return {flexShrink: 0}
+    }
+    if(params.length === 1 && !isNaN(parseFloat(params[0]))) {
+      return { flex: parseFloat(params[0])}
+    }
+  },
   items: {
     start: {
       alignItems: "flex-start"

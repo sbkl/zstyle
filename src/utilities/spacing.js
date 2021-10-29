@@ -42,6 +42,10 @@ function setStyle(attribute, params, negative = false) {
 }
 
 export default {
+  space: {
+    y: params => setStyle('marginTop', params),
+    x: params => setStyle('marginLeft', params),
+  },
   h: params => setStyle('height', params),
   max: {
     h: params => setStyle('maxHeight', params),

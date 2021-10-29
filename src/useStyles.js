@@ -3,13 +3,43 @@ import utilities from "./utilities";
 
 function useStyles(style) {
   const [styleState, setStyleState] = useState({});
+  const [textStyleState, setTextStyleState] = useState({});
+  const [spaceStyleState, setSpaceStyleState] = useState({});
+  const [transformStyleState, setTransformStyleState] = useState({});
 
   useEffect(() => {
     if (style) {
       if (typeof style === "string") {
-        setStyleState(transformString(style));
+        const {
+          initialStyle,
+          textStyles,
+          spaceStyles,
+          transformStyle,
+        } = transformString(style);
+        setStyleState(initialStyle);
+        setTextStyleState(textStyles);
+        setSpaceStyleState(spaceStyles);
+        setTransformStyleState(transformStyle);
       } else if (Array.isArray(style)) {
-        setStyleState(transformArray(style));
+        style.forEach((item) => {
+          if (typeof item === "string") {
+            const {
+              initialStyle,
+              textStyles,
+              spaceStyles,
+              transformStyle,
+            } = transformString(item);
+            setStyleState({ ...styleState, ...initialStyle });
+            setTextStyleState({ ...textStyleState, ...textStyles });
+            setSpaceStyleState({ ...spaceStyleState, ...spaceStyles });
+            setTransformStyleState({
+              ...transformStyleState,
+              ...transformStyle,
+            });
+          } else if (typeof item === "object") {
+            setStyleState({ ...styleState, ...item });
+          }
+        });
       }
     } else {
       setStyleState({});
@@ -45,26 +75,63 @@ function useStyles(style) {
   }
 
   function transformString(style) {
-    return style.split(" ").reduce((carry, item) => {
-      const output = reduceStyle(utilities, item, item);
+    const initialArray = style.split(" ");
+    const initialStyle = initialArray
+      .filter(
+        (item) =>
+          !item.includes("text-") &&
+          !item.includes("font-") &&
+          !item.includes("space-")
+      )
+      .reduce((carry, item) => {
+        const output = reduceStyle(utilities, item, item);
+        if (output != undefined) {
+          carry = { ...carry, ...output };
+        }
+        return carry;
+      }, {});
+
+    const textArray = initialArray.filter(
+      (item) => item.includes("text-") || item.includes("font-")
+    );
+
+    const textStyles = textArray.reduce((carry, textStyle) => {
+      const output = reduceStyle(utilities, textStyle, textStyle);
       if (output != undefined) {
         carry = { ...carry, ...output };
       }
       return carry;
     }, {});
-  }
 
-  function transformArray(style) {
-    return style.reduce((carry, item) => {
-      if (typeof item === "string") {
-        carry = { ...carry, ...transformString(item) };
-      } else if (typeof item === "object") {
-        carry = { ...carry, ...item };
+    const spaceArray = initialArray.filter((item) => item.includes("space-"));
+
+    const spaceStyles = spaceArray.reduce((carry, spaceStyle) => {
+      const output = reduceStyle(utilities, spaceStyle, spaceStyle);
+      if (output != undefined) {
+        carry = { ...carry, ...output };
       }
       return carry;
     }, {});
+
+    const transformArray = initialArray.filter(
+      (item) =>
+        item.includes("rotate-") ||
+        item.includes("scale-") ||
+        item.includes("translate-") ||
+        item.includes("skew-")
+    );
+    const transformStyle = transformArray.length
+      ? utilities.transform(transformArray)
+      : {};
+    return { initialStyle, textStyles, spaceStyles, transformStyle };
   }
-  return styleState;
+
+  return {
+    styles: styleState,
+    textStyle: textStyleState,
+    spaceStyle: spaceStyleState,
+    transformStyle: transformStyleState,
+  };
 }
 
 export default useStyles;
